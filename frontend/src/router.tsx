@@ -1,10 +1,9 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
-
-const DashboardPlaceholder = () => (
-    <div className="flex h-screen items-center justify-center font-bold">Dashboard (Coming Soon)</div>
-);
+import Dashboard from './pages/Dashboard';
+import Organizer from './pages/Organizer';
+import CreateEvent from "./pages/CreateEvent.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -21,7 +20,13 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardPlaceholder />,
+        element: <Dashboard />,
+    },
+    {
+        path: '/organizer', element: <Organizer />
+    },
+    {
+        path: '/createEvent', element: <CreateEvent />
     },
     {
         path: '*',
