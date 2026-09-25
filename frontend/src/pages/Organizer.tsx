@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import pythonImg from '../assets/python.jpg';
+import hackathonImg from '../assets/hackathon.png';
+import networkingImg from '../assets/networking.jpg';
 import {
     LayoutDashboard,
     CalendarDays,
@@ -29,30 +32,29 @@ interface OrgEvent {
     status: EventStatus;
     rsvps: number | null;
     capacity: number | null;
-    // TODO: replace with real image → src={event.image}
-    image: null;
+    image: string | null;
 }
 
 const myEvents: OrgEvent[] = [
     {
         id: 1,
         title: 'Introduction to Python Workshop',
-        location: 'Computer Science Building, Lab 4',
+        location: 'Engineering Building, Lab 1.11',
         date: 'Oct 12, 2026',
         status: 'PUBLISHED',
         rsvps: 45,
         capacity: 100,
-        image: null,
+        image: pythonImg,
     },
     {
         id: 2,
-        title: 'Winter Hackathon 2024',
+        title: 'Summer Hackathon 2026',
         location: 'Engineering Atrium',
         date: 'Dec 05, 2026',
         status: 'DRAFT',
         rsvps: null,
         capacity: null,
-        image: null,
+        image: hackathonImg,
     },
     {
         id: 3,
@@ -62,7 +64,7 @@ const myEvents: OrgEvent[] = [
         status: 'PUBLISHED',
         rsvps: 192,
         capacity: 200,
-        image: null,
+        image: networkingImg,
     },
 ];
 
@@ -172,196 +174,206 @@ export default function Organizer() {
                 </header>
 
                 {/* Scrollable body */}
-                <div className="flex-1 overflow-y-auto px-8 py-8 space-y-8">
+                <div className="flex-1 overflow-y-auto px-8 py-8">
+                    <div className="max-w-6xl mx-auto space-y-8">
 
-                    {/* Welcome + CTA */}
-                    <div className="flex items-start justify-between">
-                        <div>
-                            <h1 className="text-3xl font-extrabold text-brand-primary">Welcome back, Tech Club</h1>
-                            <p className="text-sm text-muted mt-1">Manage your campus activities and monitor engagement.</p>
-                        </div>
-                        <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-brand-primary text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-subtle">
-                            <Plus className="h-4 w-4" />
-                            Create New Event
-                        </button>
-                    </div>
-
-                    {/* Stat Cards */}
-                    <div className="grid grid-cols-3 gap-5">
-
-                        {/* Total RSVPs */}
-                        <div className="bg-card rounded-2xl border border-ui-border p-5">
-                            <p className="text-xs font-bold uppercase tracking-wider text-muted mb-2">Total RSVPs</p>
-                            <p className="text-4xl font-extrabold text-brand-primary">367</p>
-                            <p className="text-xs text-green-500 font-semibold mt-1 flex items-center gap-1">
-                                <TrendingUp className="h-3 w-3" />
-                                12% from last month
-                            </p>
-                        </div>
-
-                        {/* Active Events */}
-                        <div className="bg-card rounded-2xl border border-ui-border p-5">
-                            <p className="text-xs font-bold uppercase tracking-wider text-muted mb-2">Active Events</p>
-                            <p className="text-4xl font-extrabold text-brand-primary">08</p>
-                            <p className="text-xs text-blue-500 font-semibold mt-1 flex items-center gap-1">
-                                <Calendar className="h-3 w-3" />
-                                3 scheduled this week
-                            </p>
-                        </div>
-
-                        {/* Next Featured Event */}
-                        <div className="rounded-2xl p-5 flex flex-col justify-between" style={{ background: '#3D1F00' }}>
-                            <p className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Next Featured Event</p>
+                        {/* Welcome + CTA */}
+                        <div className="flex items-start justify-between">
                             <div>
-                                <p className="text-lg font-extrabold text-white leading-snug">AI in Modern Ethics Symposium</p>
-                                <p className="text-xs text-neutral-300 mt-1 flex items-center gap-1">
-                                    <GraduationCap className="h-3 w-3" />
-                                    Oct 24 · Great Hall Auditorium
+                                <h1 className="text-3xl font-extrabold text-brand-primary">Welcome back, Tech Club</h1>
+                                <p className="text-sm text-muted mt-1">Manage your campus activities and monitor engagement.</p>
+                            </div>
+                            <button className="flex items-center gap-2 px-5 py-3 rounded-xl bg-brand-primary text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-subtle">
+                                <Plus className="h-4 w-4" />
+                                Create New Event
+                            </button>
+                        </div>
+
+                        {/* Stat Cards */}
+                        <div className="grid grid-cols-3 gap-5">
+
+                            {/* Total RSVPs */}
+                            <div className="bg-card rounded-2xl border border-ui-border p-5">
+                                <p className="text-xs font-bold uppercase tracking-wider text-muted mb-2">Total RSVPs</p>
+                                <p className="text-4xl font-extrabold text-brand-primary">367</p>
+                                <p className="text-xs text-green-500 font-semibold mt-1 flex items-center gap-1">
+                                    <TrendingUp className="h-3 w-3" />
+                                    12% from last month
                                 </p>
                             </div>
-                        </div>
-                    </div>
 
-                    {/* Upcoming Events Table */}
-                    <div className="bg-card rounded-2xl border border-ui-border overflow-hidden">
+                            {/* Active Events */}
+                            <div className="bg-card rounded-2xl border border-ui-border p-5">
+                                <p className="text-xs font-bold uppercase tracking-wider text-muted mb-2">Active Events</p>
+                                <p className="text-4xl font-extrabold text-brand-primary">08</p>
+                                <p className="text-xs text-blue-500 font-semibold mt-1 flex items-center gap-1">
+                                    <Calendar className="h-3 w-3" />
+                                    3 scheduled this week
+                                </p>
+                            </div>
 
-                        {/* Table Header */}
-                        <div className="flex items-center justify-between px-6 py-4 border-b border-ui-border">
-                            <h2 className="text-base font-bold text-brand-primary">Upcoming Events</h2>
-                            <div className="flex items-center gap-2">
-                                <button className="px-3 py-1.5 rounded-lg border border-ui-border text-xs font-semibold text-brand-primary hover:bg-app transition-colors">
-                                    All Status
-                                </button>
-                                <button className="px-3 py-1.5 rounded-lg border border-ui-border text-xs font-semibold text-brand-primary hover:bg-app transition-colors">
-                                    Export CSV
-                                </button>
+                            {/* Next Featured Event */}
+                            <div className="rounded-2xl p-5 flex flex-col justify-between" style={{ background: '#3D1F00' }}>
+                                <p className="text-xs font-bold uppercase tracking-wider text-brand-accent mb-2">Next Featured Event</p>
+                                <div>
+                                    <p className="text-lg font-extrabold text-white leading-snug">AI in Modern Ethics Symposium</p>
+                                    <p className="text-xs text-neutral-300 mt-1 flex items-center gap-1">
+                                        <GraduationCap className="h-3 w-3" />
+                                        Oct 24 · Great Hall Auditorium
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Column Labels */}
-                        <div className="grid grid-cols-[2fr_1fr_1fr_2fr_1fr] gap-4 px-6 py-3 border-b border-ui-border">
-                            {['Event Title', 'Date', 'Status', 'RSVPs', 'Actions'].map((col) => (
-                                <span key={col} className="text-xs font-bold uppercase tracking-wider text-muted">{col}</span>
-                            ))}
-                        </div>
+                        {/* Upcoming Events Table */}
+                        <div className="bg-card rounded-2xl border border-ui-border overflow-hidden">
 
-                        {/* Rows */}
-                        <ul className="divide-y divide-ui-border">
-                            {myEvents.map((event) => (
-                                <li key={event.id} className="grid grid-cols-[2fr_1fr_1fr_2fr_1fr] gap-4 items-center px-6 py-4 hover:bg-app transition-colors">
+                            {/* Table Header */}
+                            <div className="flex items-center justify-between px-6 py-4 border-b border-ui-border">
+                                <h2 className="text-base font-bold text-brand-primary">Upcoming Events</h2>
+                                <div className="flex items-center gap-2">
+                                    <button className="px-3 py-1.5 rounded-lg border border-ui-border text-xs font-semibold text-brand-primary hover:bg-app transition-colors">
+                                        All Status
+                                    </button>
+                                    <button className="px-3 py-1.5 rounded-lg border border-ui-border text-xs font-semibold text-brand-primary hover:bg-app transition-colors">
+                                        Export CSV
+                                    </button>
+                                </div>
+                            </div>
 
-                                    {/* Event Title + Image placeholder */}
-                                    <div className="flex items-center gap-3 min-w-0">
-                                        {/* TODO: replace with <img src={event.image} className="h-10 w-10 rounded-lg object-cover flex-shrink-0" /> */}
-                                        <div className="h-10 w-10 rounded-lg bg-neutral-100 border border-ui-border flex items-center justify-center flex-shrink-0">
-                                            <ImageIcon className="h-5 w-5 text-muted" />
+                            {/* Column Labels */}
+                            <div className="grid grid-cols-[2fr_1fr_1fr_2fr_1fr] gap-4 px-6 py-3 border-b border-ui-border">
+                                {['Event Title', 'Date', 'Status', 'RSVPs', 'Actions'].map((col) => (
+                                    <span key={col} className="text-xs font-bold uppercase tracking-wider text-muted">{col}</span>
+                                ))}
+                            </div>
+
+                            {/* Rows */}
+                            <ul className="divide-y divide-ui-border">
+                                {myEvents.map((event) => (
+                                    <li key={event.id} className="grid grid-cols-[2fr_1fr_1fr_2fr_1fr] gap-4 items-center px-6 py-4 hover:bg-app transition-colors">
+
+                                        {/* Event Title + Image placeholder */}
+                                        <div className="flex items-center gap-3 min-w-0">
+                                            {event.image ? (
+                                                <img
+                                                    src={event.image}
+                                                    alt={event.title}
+                                                    className="h-10 w-10 rounded-lg object-cover flex-shrink-0 border border-ui-border"
+                                                />
+                                            ) : (
+                                                <div className="h-10 w-10 rounded-lg bg-neutral-100 border border-ui-border flex items-center justify-center flex-shrink-0">
+                                                    <ImageIcon className="h-5 w-5 text-muted" />
+                                                </div>
+                                            )}
+                                            <div className="min-w-0">
+                                                <p className="text-sm font-semibold text-brand-primary truncate">{event.title}</p>
+                                                <p className="text-xs text-muted truncate">{event.location}</p>
+                                            </div>
                                         </div>
-                                        <div className="min-w-0">
-                                            <p className="text-sm font-semibold text-brand-primary truncate">{event.title}</p>
-                                            <p className="text-xs text-muted truncate">{event.location}</p>
-                                        </div>
-                                    </div>
 
-                                    {/* Date */}
-                                    <span className="text-sm text-brand-primary">{event.date}</span>
+                                        {/* Date */}
+                                        <span className="text-sm text-brand-primary">{event.date}</span>
 
-                                    {/* Status */}
-                                    <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${
-                                        event.status === 'PUBLISHED' ? 'text-green-600' : 'text-muted'
-                                    }`}>
+                                        {/* Status */}
+                                        <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${
+                                            event.status === 'PUBLISHED' ? 'text-green-600' : 'text-muted'
+                                        }`}>
                                         <span className={`h-1.5 w-1.5 rounded-full ${
                                             event.status === 'PUBLISHED' ? 'bg-green-500' : 'bg-neutral-400'
                                         }`} />
-                                        {event.status === 'PUBLISHED' ? 'Published' : 'Draft'}
+                                            {event.status === 'PUBLISHED' ? 'Published' : 'Draft'}
                                     </span>
 
-                                    {/* RSVPs + capacity bar */}
-                                    <div>
-                                        {event.rsvps !== null && event.capacity !== null ? (
-                                            <CapacityBar rsvps={event.rsvps} capacity={event.capacity} />
-                                        ) : (
-                                            <span className="text-xs text-muted">No capacity set</span>
-                                        )}
-                                    </div>
-
-                                    {/* Actions */}
-                                    <div className="flex items-center gap-2">
-                                        <button className="p-1.5 rounded-md border border-ui-border text-muted hover:text-brand-primary hover:border-brand-primary transition-colors">
-                                            <Pencil className="h-3.5 w-3.5" />
-                                        </button>
-                                        <button className="p-1.5 rounded-md border border-red-200 text-red-400 hover:text-red-600 hover:border-red-400 transition-colors">
-                                            <Trash2 className="h-3.5 w-3.5" />
-                                        </button>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-
-                        {/* Pagination */}
-                        <div className="flex items-center justify-between px-6 py-4 border-t border-ui-border">
-                            <span className="text-xs text-muted">Showing 3 of 8 events</span>
-                            <div className="flex items-center gap-1">
-                                <button className="p-1.5 rounded-lg border border-ui-border text-muted hover:bg-app transition-colors">
-                                    <ChevronLeft className="h-4 w-4" />
-                                </button>
-                                <button className="px-3 py-1.5 rounded-lg bg-brand-primary text-white text-xs font-semibold">1</button>
-                                <button className="px-3 py-1.5 rounded-lg border border-ui-border text-xs font-semibold text-muted hover:bg-app transition-colors">2</button>
-                                <button className="p-1.5 rounded-lg border border-ui-border text-muted hover:bg-app transition-colors">
-                                    <ChevronRight className="h-4 w-4" />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Bottom Row */}
-                    <div className="grid grid-cols-2 gap-5 pb-8">
-
-                        {/* Pending Tasks */}
-                        <div className="bg-card rounded-2xl border border-ui-border p-6">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="h-8 w-8 rounded-lg bg-brand-primary flex items-center justify-center">
-                                    <CalendarDays className="h-4 w-4 text-white" />
-                                </div>
-                                <h3 className="text-base font-bold text-brand-primary">Pending Tasks</h3>
-                            </div>
-                            <ul className="space-y-3">
-                                {[
-                                    { task: 'Review speaker bios', sub: 'Tech Ethics Symposium' },
-                                    { task: 'Confirm venue booking', sub: 'Winter Hackathon 2024' },
-                                    { task: 'Send attendee reminders', sub: 'Python Workshop' },
-                                ].map((t) => (
-                                    <li key={t.task} className="flex items-start gap-2">
-                                        <span className="mt-1.5 h-2 w-2 rounded-full bg-brand-accent flex-shrink-0" />
+                                        {/* RSVPs + capacity bar */}
                                         <div>
-                                            <p className="text-sm font-semibold text-brand-primary">{t.task}</p>
-                                            <p className="text-xs text-muted">{t.sub}</p>
+                                            {event.rsvps !== null && event.capacity !== null ? (
+                                                <CapacityBar rsvps={event.rsvps} capacity={event.capacity} />
+                                            ) : (
+                                                <span className="text-xs text-muted">No capacity set</span>
+                                            )}
+                                        </div>
+
+                                        {/* Actions */}
+                                        <div className="flex items-center gap-2">
+                                            <button className="p-1.5 rounded-md border border-ui-border text-muted hover:text-brand-primary hover:border-brand-primary transition-colors">
+                                                <Pencil className="h-3.5 w-3.5" />
+                                            </button>
+                                            <button className="p-1.5 rounded-md border border-red-200 text-red-400 hover:text-red-600 hover:border-red-400 transition-colors">
+                                                <Trash2 className="h-3.5 w-3.5" />
+                                            </button>
                                         </div>
                                     </li>
                                 ))}
                             </ul>
-                        </div>
 
-                        {/* Organizer Insights */}
-                        <div className="bg-card rounded-2xl border border-ui-border p-6">
-                            <h3 className="text-base font-bold text-brand-primary mb-2">Organizer Insights</h3>
-                            <p className="text-sm text-muted mb-6">
-                                Based on your recent events, engagement peaks around 3 PM on Tuesdays. Consider scheduling your next registration launch then.
-                            </p>
-                            {/* Simple bar chart placeholder */}
-                            <div className="flex items-end gap-2 h-16">
-                                {[40, 65, 30, 80, 55, 90, 45].map((h, i) => (
-                                    <div
-                                        key={i}
-                                        className="flex-1 rounded-t"
-                                        style={{
-                                            height: `${h}%`,
-                                            background: i === 5 ? 'var(--color-brand-accent)' : 'var(--color-brand-primary)',
-                                            opacity: i === 5 ? 1 : 0.15,
-                                        }}
-                                    />
-                                ))}
+                            {/* Pagination */}
+                            <div className="flex items-center justify-between px-6 py-4 border-t border-ui-border">
+                                <span className="text-xs text-muted">Showing 3 of 8 events</span>
+                                <div className="flex items-center gap-1">
+                                    <button className="p-1.5 rounded-lg border border-ui-border text-muted hover:bg-app transition-colors">
+                                        <ChevronLeft className="h-4 w-4" />
+                                    </button>
+                                    <button className="px-3 py-1.5 rounded-lg bg-brand-primary text-white text-xs font-semibold">1</button>
+                                    <button className="px-3 py-1.5 rounded-lg border border-ui-border text-xs font-semibold text-muted hover:bg-app transition-colors">2</button>
+                                    <button className="p-1.5 rounded-lg border border-ui-border text-muted hover:bg-app transition-colors">
+                                        <ChevronRight className="h-4 w-4" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
+
+                        {/* Bottom Row */}
+                        <div className="grid grid-cols-2 gap-5 pb-8">
+
+                            {/* Pending Tasks */}
+                            <div className="bg-card rounded-2xl border border-ui-border p-6">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-8 w-8 rounded-lg bg-brand-primary flex items-center justify-center">
+                                        <CalendarDays className="h-4 w-4 text-white" />
+                                    </div>
+                                    <h3 className="text-base font-bold text-brand-primary">Pending Tasks</h3>
+                                </div>
+                                <ul className="space-y-3">
+                                    {[
+                                        { task: 'Review speaker bios', sub: 'Tech Ethics Symposium' },
+                                        { task: 'Confirm venue booking', sub: 'Winter Hackathon 2024' },
+                                        { task: 'Send attendee reminders', sub: 'Python Workshop' },
+                                    ].map((t) => (
+                                        <li key={t.task} className="flex items-start gap-2">
+                                            <span className="mt-1.5 h-2 w-2 rounded-full bg-brand-accent flex-shrink-0" />
+                                            <div>
+                                                <p className="text-sm font-semibold text-brand-primary">{t.task}</p>
+                                                <p className="text-xs text-muted">{t.sub}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Organizer Insights */}
+                            <div className="bg-card rounded-2xl border border-ui-border p-6">
+                                <h3 className="text-base font-bold text-brand-primary mb-2">Organizer Insights</h3>
+                                <p className="text-sm text-muted mb-6">
+                                    Based on your recent events, engagement peaks around 3 PM on Tuesdays. Consider scheduling your next registration launch then.
+                                </p>
+                                {/* Simple bar chart placeholder */}
+                                <div className="flex items-end gap-2 h-16">
+                                    {[40, 65, 30, 80, 55, 90, 45].map((h, i) => (
+                                        <div
+                                            key={i}
+                                            className="flex-1 rounded-t"
+                                            style={{
+                                                height: `${h}%`,
+                                                background: i === 5 ? 'var(--color-brand-accent)' : 'var(--color-brand-primary)',
+                                                opacity: i === 5 ? 1 : 0.15,
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </main>

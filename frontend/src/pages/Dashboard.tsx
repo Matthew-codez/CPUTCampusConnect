@@ -1,33 +1,24 @@
 import { useState } from 'react';
 import { Menu, X, Search, Bell, Calendar, ChevronDown, Users, MapPin, Clock } from 'lucide-react';
+import absaImg from '../assets/absa.jpg';
+import potteryImg from '../assets/pottery.jpg';
+import aiEthicsImg from '../assets/ai-ethics.jpg';
+import greenMarketImg from '../assets/green-market.jpg';
+import soccerImg from '../assets/soccer.jpg';
 
 const events = [
-    {
-        id: 1,
-        month: 'OCT',
-        day: '24',
-        category: 'Academic',
-        spots: '12 spots left',
-        spotsFull: false,
-        title: 'Application Development Practice',
-        organizer: 'ADP Graduate Union',
-        time: '2:00 PM',
-        location: 'District Six Room 1.19',
-        // TODO: replace with real image → src={eventImage}
-        image: null,
-    },
     {
         id: 2,
         month: 'OCT',
         day: '26',
-        category: 'Social',
-        spots: 'Full House',
-        spotsFull: true,
-        title: 'Autumn Mixer',
-        organizer: 'Student Entertainment Board',
+        category: 'Careers',
+        spots: '20 spots left',
+        spotsFull: false,
+        title: 'Absa GradStar Campus Talk',
+        organizer: 'Absa GradStar Programme',
         time: '6:00 PM',
         location: 'Bellville Campus',
-        image: null,
+        image: absaImg,
     },
     {
         id: 3,
@@ -36,11 +27,11 @@ const events = [
         category: 'Sports',
         spots: '5 spots left',
         spotsFull: false,
-        title: 'Inter-Collegiate Soccer Trials',
-        organizer: 'Campus Athletics Dept.',
+        title: 'Soccer Five-A-Side',
+        organizer: 'CPUT Sport Bureau',
         time: '4:30 PM',
         location: 'Bellville Campus',
-        image: null,
+        image: soccerImg,
     },
     {
         id: 4,
@@ -50,10 +41,10 @@ const events = [
         spots: '8 spots left',
         spotsFull: false,
         title: 'Hand-Built Pottery Workshop',
-        organizer: 'Fine Arts Society',
+        organizer: 'Dept. of Applied Design (Informatics & Design)',
         time: '11:00 AM',
         location: 'District Six Art Annex',
-        image: null,
+        image: potteryImg,
     },
     {
         id: 5,
@@ -63,10 +54,10 @@ const events = [
         spots: 'Limited',
         spotsFull: false,
         title: 'AI & Ethics Debate Night',
-        organizer: 'Philosophy & Computing Club',
+        organizer: 'Faculty of Engineering & the Built Environment',
         time: '6:30 PM',
         location: 'District Six Campus Library Hall',
-        image: null,
+        image: aiEthicsImg,
     },
     {
         id: 6,
@@ -76,10 +67,10 @@ const events = [
         spots: 'Unlimited',
         spotsFull: false,
         title: 'Weekly Campus Green Market',
-        organizer: 'Sustainability Alliance',
+        organizer: 'Faculty of Applied Sciences (Environmental Studies)',
         time: '10:00 AM',
         location: 'Mowbray Campus',
-        image: null,
+        image: greenMarketImg,
     },
 ];
 
@@ -88,6 +79,7 @@ const categoryColours: Record<string, string> = {
     Social: 'bg-blue-100 text-blue-600',
     Sports: 'bg-yellow-100 text-yellow-700',
     Workshop: 'bg-green-100 text-green-700',
+    Careers: 'bg-purple-100 text-purple-600',
 };
 
 export default function Dashboard() {
@@ -214,9 +206,12 @@ export default function Dashboard() {
                             >
                                 {/* Event Image */}
                                 <div className="relative h-48 bg-neutral-200 overflow-hidden">
-                                    {/* TODO: add real image here like:
-                                        <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
-                                    */}
+                                    <img
+                                        src={event.image}
+                                        alt={event.title}
+                                        className="w-full h-full object-cover"
+                                        loading="lazy"
+                                    />
 
                                     {/* Date Badge */}
                                     <div className="absolute top-3 left-3 bg-white rounded-lg px-2.5 py-1.5 text-center shadow-sm min-w-[44px]">

@@ -61,7 +61,6 @@ export default function CreateEvent() {
     };
 
     const handlePublish = () => {
-        // TODO: call API to publish event
         console.log({ title, description, date, campus, venue, startTime, endTime, capacity });
     };
 
@@ -72,7 +71,7 @@ export default function CreateEvent() {
             <aside className="w-56 flex-shrink-0 bg-card border-r border-ui-border flex flex-col">
                 <div className="px-5 py-5 border-b border-ui-border">
                     <div className="flex items-center gap-3 mb-4">
-                        {/* TODO: replace with real avatar image */}
+
                         <div className="h-10 w-10 rounded-full bg-neutral-200 flex items-center justify-center flex-shrink-0">
                             <UserCircle className="h-7 w-7 text-muted" />
                         </div>
@@ -147,7 +146,7 @@ export default function CreateEvent() {
                         <span className="font-semibold text-brand-primary">Create New Event</span>
                     </div>
 
-                    <div className="bg-card rounded-2xl border border-ui-border overflow-hidden max-w-3xl">
+                    <div className="bg-card rounded-2xl border border-ui-border overflow-hidden max-w-3xl mx-auto">
 
                         {/* Hero */}
                         <div className="px-8 py-8" style={{ background: 'linear-gradient(135deg, #0A2240 0%, #0f3460 100%)' }}>
