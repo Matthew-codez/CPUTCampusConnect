@@ -40,7 +40,7 @@ export default function CreateEvent() {
     const [searchQuery, setSearchQuery] = useState('');
     const [isDragging, setIsDragging] = useState(false);
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = (e: import('react').ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             const reader = new FileReader();
@@ -49,7 +49,7 @@ export default function CreateEvent() {
         }
     };
 
-    const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
+    const handleDrop = (e: import('react').DragEvent<HTMLLabelElement>) => {
         e.preventDefault();
         setIsDragging(false);
         const file = e.dataTransfer.files?.[0];
